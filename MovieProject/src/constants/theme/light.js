@@ -4,5 +4,5 @@ export default {
   backgroundColor: 'white',
   bottomTabColor: 'white',
   active: 'blue',
-  contrast:'white'
+  contrast: 'white',
 };

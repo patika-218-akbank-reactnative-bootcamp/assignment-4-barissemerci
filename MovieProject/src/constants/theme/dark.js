@@ -4,5 +4,5 @@ export default {
   backgroundColor: '#17212b',
   bottomTabColor: '#0e1621',
   active: 'yellow',
-  contrast:'black'
+  contrast: 'black',
 };

@@ -1,8 +1,8 @@
 import React, {useContext} from 'react';
 import {StyleSheet, TouchableOpacity, View, Text, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from '../redux/user';
+import {useSelector, useDispatch} from 'react-redux';
+import {setUser} from '../redux/user';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {ThemeContext} from '../context/theme';
@@ -10,7 +10,6 @@ import {ThemeContext} from '../context/theme';
 const SettingsScreen = () => {
   const {theme} = useContext(ThemeContext);
 
-  
   const navigation = useNavigation();
 
   function navigateEditProfileScreen() {
@@ -21,44 +20,47 @@ const SettingsScreen = () => {
     navigation.navigate('ThemeOptionsScreen');
   }
 
-  const {user} = useSelector(state=>state.user)
-  const dispatch= useDispatch()
+  const {user} = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   const clearStore = () => {
-      try {
-        AsyncStorage.removeItem('user').then(dispatch(setUser(null)))
-     
-      } catch (e) {
-        console.log(e)
-      }
+    try {
+      AsyncStorage.removeItem('user').then(dispatch(setUser(null)));
+    } catch (e) {
+      console.log(e);
     }
+  };
 
-    function handleLogout() {
-      clearStore()
-     
-      console.log("logoutuser",user)
-    
+  function handleLogout() {
+    clearStore();
+
+    console.log('logoutuser', user);
   }
 
   return (
-    <View style={[styles.container,{backgroundColor:theme.backgroundColor}]}>
+    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Image
         style={styles.imageStyle}
         source={{uri: 'https://picsum.photos/id/7/150/150'}}
       />
       <TouchableOpacity
         onPress={navigateThemeOptionsScreen}
-        style={[styles.buttonContainer,{borderColor:theme.fontColor}]}>
-        <Text style={[styles.buttonTextStyle,{color:theme.fontColor}]}>Theme</Text>
+        style={[styles.buttonContainer, {borderColor: theme.fontColor}]}>
+        <Text style={[styles.buttonTextStyle, {color: theme.fontColor}]}>
+          Theme
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={navigateEditProfileScreen}
-        style={[styles.buttonContainer,{borderColor:theme.fontColor}]}>
-        <Text style={[styles.buttonTextStyle,{color:theme.fontColor}]}>Edit Profile</Text>
+        style={[styles.buttonContainer, {borderColor: theme.fontColor}]}>
+        <Text style={[styles.buttonTextStyle, {color: theme.fontColor}]}>
+          Edit Profile
+        </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[styles.logOutButtonContainer,{borderColor:theme.fontColor}]}>
+      <TouchableOpacity
+        style={[styles.logOutButtonContainer, {borderColor: theme.fontColor}]}>
         <Text
-          style={[styles.buttonTextStyle,{color:theme.fontColor}]}
+          style={[styles.buttonTextStyle, {color: theme.fontColor}]}
           onPress={handleLogout}>
           Log out
         </Text>
@@ -79,7 +81,7 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
   buttonContainer: {
-    borderWidth:2,
+    borderWidth: 2,
     width: 200,
     height: 50,
     borderRadius: 25,
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   logOutButtonContainer: {
-    borderWidth:2,
+    borderWidth: 2,
     width: 200,
     height: 50,
     borderRadius: 25,
