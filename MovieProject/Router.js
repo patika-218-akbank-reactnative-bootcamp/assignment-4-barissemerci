@@ -1,8 +1,31 @@
-import React from 'react';
-import MainContainer from './navigation/MainContainer';
+import React,{useRef} from 'react';
+import MainContainer from './src/navigation/MainContainer';
+import FlashMessage from "react-native-flash-message";
 
 function App() {
-  return <MainContainer />;
+  const ref = useRef();
+  return (
+  
+  <>
+   
+   <MainContainer />
+  
+  <FlashMessage ref={ref} />
+  
+  </>
+ 
+  
+  
+  )
+  
+  
+  
+  
+  ;
+
+
+
+
 }
 
 export default App;
